@@ -1,0 +1,4 @@
+services:
+#    calor_api.example:
+#        class: Calor\ApiBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

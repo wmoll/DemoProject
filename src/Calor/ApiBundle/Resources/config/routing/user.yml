@@ -1,0 +1,19 @@
+user_get:
+    pattern: /user/{token}
+    defaults: { _controller: CalorApiBundle:User:get, _format: json }
+    methods: GET
+
+user_post:
+    pattern: /user
+    defaults: { _controller: CalorApiBundle:User:post, _format: json  }
+    methods: POST
+
+user_put:
+    pattern: /user/{token}
+    defaults: { _controller: CalorApiBundle:User:put, _format: json  }
+    methods: PUT
+
+user_delete:
+    pattern: /user/{token}
+    defaults: { _controller: CalorApiBundle:User:delete, _format: json  }
+    methods: DELETE

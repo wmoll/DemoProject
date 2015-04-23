@@ -1,0 +1,4 @@
+reports_get:
+    pattern: /reports/{token}/{mode}
+    defaults: { _controller: CalorApiBundle:Report:get, _format: json }
+    methods: GET

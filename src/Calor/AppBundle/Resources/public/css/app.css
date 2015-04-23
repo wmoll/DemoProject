@@ -1,0 +1,39 @@
+input.ng-invalid.ng-touched {
+    background-color: #e8c6c7;
+}
+
+.form-error-message{
+    color: red;
+}
+
+.form-error-login-message{
+    color: red;
+    border: 1px red solid;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.animate-hide {
+    -webkit-transition: all linear 0.5s;
+    transition: all linear 0.5s;
+    line-height: 20px;
+    opacity: 1;
+    padding: 10px;
+    background: white;
+}
+
+.animate-hide.ng-hide {
+    line-height: 0;
+    opacity: 0;
+    padding: 0 10px;
+}
+
+.loadingRequestProcess{
+    background: url("../images/ajax-loader.gif") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 100px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100px;
+}

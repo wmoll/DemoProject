@@ -1,0 +1,35 @@
+<div class="row account-box">
+    <div class="col-sm-6">
+        <h1>Create Free Account</h1>
+        <div class="col-md-8">
+            <form role="form" name="createAccountForm" ng-submit="create(guest)"  novalidate>
+                <div class="form-error-login-message" ng-show="errorCreate">{{errorCreate}}</div>
+                <div class="form-group">
+                    <input type="text" class="form-control" required="required" id="name" ng-model="guest.username"  placeholder="Login">
+                    <span class="form-error-message" ng-show="createErrors.username">{{createErrors.username}}</span>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" required="required" id="display_name" ng-model="guest.display_name" placeholder="First & Last Name">
+                    <span class="form-error-message" ng-show="createErrors.displayName">{{createErrors.displayName}}</span>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" required="required" id="email" ng-model="guest.email" placeholder="Email address">
+                    <span class="form-error-message" ng-show="createErrors.email">{{createErrors.email}}</span>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="password" ng-model="guest.password" placeholder="Password">
+                    <span class="form-error-message" ng-show="createErrors.password">{{createErrors.password}}</span>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="confirm" ng-model="confirm" compare-to="guest.password" required placeholder="Confirm password">
+                </div>
+                <button type="submit" class="btn btn-danger pull-right text-center" ng-hide="inProcess" style="min-width:100px;">Sign in <ng-md-icon style="fill:#fff;position: absolute;" icon="chevron_right"></ng-md-icon> </button>
+            </form>
+        </div>
+
+    </div>
+    <div class="col-sm-6">
+        <h2>Already have an account?</h2>
+        <a style="min-width: 280px; font-size:16px;" href="#/login" class="btn btn-primary">Log in <ng-md-icon style="fill:#fff;position: absolute;" icon="chevron_right"></ng-md-icon></a><br/>
+    </div>
+</div>

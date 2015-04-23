@@ -1,0 +1,12 @@
+calor_app:
+    resource: "@CalorAppBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+calor_api:
+    resource: "@CalorApiBundle/Resources/config/routing.yml"
+    prefix:   /api/v1
+
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc

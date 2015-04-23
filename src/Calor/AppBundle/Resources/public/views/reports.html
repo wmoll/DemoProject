@@ -1,0 +1,30 @@
+<h1>Reports</h1>
+
+<div style="width: 400px;">
+    Goal: <input ng-model="user.target"/>
+    <button type="submit" class="btn btn-danger" ng-click="saveUser()" style="min-width:100px;">Save</button>
+</div>
+
+
+<div class="row">
+    <table class="table table-striped" >
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Date</th>
+            <th>Total calories</th>
+            <th>Goal</th>
+            <th>Balance</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in report">
+            <td>{{$index + 1}}</td>
+            <td>{{item.day | date:'yyyy/MM/dd'}}</td>
+            <td>{{item.total}}</td>
+            <td>{{user.target}}</td>
+            <td>{{item.total - user.target}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

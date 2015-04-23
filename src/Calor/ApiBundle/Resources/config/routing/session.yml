@@ -1,0 +1,15 @@
+#Autorize
+session_post:
+    pattern: /session
+    defaults: { _controller: CalorApiBundle:Session:post, _format: json  }
+    methods: POST
+#Update session
+session_put:
+    pattern: /session/{token}
+    defaults: { _controller: CalorApiBundle:Session:put, _format: json  }
+    methods: PUT
+#Log out
+session_delete:
+    pattern: /session/{token}
+    defaults: { _controller: CalorApiBundle:Session:delete, _format: json  }
+    methods: DELETE

@@ -1,0 +1,16 @@
+calor_api_meal:
+    resource: "@CalorApiBundle/Resources/config/routing/meal.yml"
+    prefix:   /
+
+
+calor_api_user:
+    resource: "@CalorApiBundle/Resources/config/routing/user.yml"
+    prefix:   /
+
+calor_api_session:
+    resource: "@CalorApiBundle/Resources/config/routing/session.yml"
+    prefix:   /
+
+calor_api_reports:
+    resource: "@CalorApiBundle/Resources/config/routing/reports.yml"
+    prefix:   /

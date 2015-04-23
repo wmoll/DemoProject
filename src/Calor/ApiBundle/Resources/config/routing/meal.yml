@@ -1,0 +1,26 @@
+meal_post:
+    pattern: /meals/{token}
+    defaults: { _controller: CalorApiBundle:Meal:post, _format: json  }
+    methods: POST
+
+meal_put:
+    pattern: /meal/{token}/{id}
+    defaults: { _controller: CalorApiBundle:Meal:put, _format: json  }
+    methods: PUT
+    requirements:
+        id: \d+
+
+meals_get:
+    pattern: /meals/{token}/{page}/{perPage}
+    defaults: { _controller: CalorApiBundle:Meal:getList, _format: json }
+    methods: GET
+    requirements:
+        page: \d+
+        perPage: \d+
+
+meal_delete:
+    pattern: /meal/{token}/{id}
+    defaults: { _controller: CalorApiBundle:Meal:delete, _format: json  }
+    methods: DELETE
+    requirements:
+        id: \d+

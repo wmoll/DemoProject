@@ -1,0 +1,14 @@
+<div class="row account-box">
+    <div class="col-sm-12">
+        <h1>Request Password Reset</h1>
+        <form role="form" name="loginForm" ng-submit="login(user)" novalidate>
+            <div class="form-error-login-message" ng-show="errorLoginMessage">{{errorLoginMessage}}</div>
+
+            <div class="form-group">
+                <label for="loginemail">Email:</label>
+                <input type="email" class="form-control" id="loginEmail" ng-model="user.email" placeholder="Enter email">
+            </div>
+            <button type="submit" class="btn btn-danger" ng-hide="inResetProcess" style="min-width:100px;">Submit <ng-md-icon style="fill:#fff;position: absolute;" icon="chevron_right"></ng-md-icon></button>
+        </form>
+    </div>
+</div>

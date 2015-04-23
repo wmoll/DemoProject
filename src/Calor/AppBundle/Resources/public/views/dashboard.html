@@ -1,0 +1,138 @@
+<div class="row">
+    <div class="col-md-12">
+
+        <button class="btn btn-default" ng-click="showAddForm = 1">Add new meal</button><br/>
+
+        <div class="check-element animate-hide" ng-show="showAddForm" >
+            <div class="row">
+                <form role="form" name="addMealForm" ng-submit="saveMeal(meal)" novalidate>
+                    <div class="form-error-login-message" ng-show="errorSave">{{errorSave}}</div>
+                    <div class="col-md-3 form-group" ng-class="{'has-error': datepickerForm.date.$invalid}">
+                        Date:<br/>
+                        <div class="form-group">
+                            <div class="form-group pull-left" style="min-width: 150px;">
+                                <input size="10" class="form-control" ng-model="meal.date" data-autoclose="1" required="" bs-datepicker type="text">
+                                <span class="form-error-message" ng-show="createErrors.date">{{createErrors.date}}</span>
+                            </div>
+                            <div class="form-group pull-left" style="padding-left: 5px;">
+                                <input size="8" class="form-control" ng-model="meal.time" data-autoclose="1" required=""  bs-timepicker  type="text">
+                                <span class="form-error-message" ng-show="createErrors.time">{{createErrors.time}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        Name:<br/>
+                        <input class="form-control" ng-model="meal.name"/>
+                        <span class="form-error-message" ng-show="createErrors.name">{{createErrors.name}}</span>
+                    </div>
+                    <div class="col-md-1">
+                        Calories:<br/>
+                        <input class="form-control inline" ng-model="meal.calories" />
+                        <span class="form-error-message" ng-show="createErrors.calories">{{createErrors.calories}}</span>
+                    </div>
+                    <div class="col-md-2"><br/>
+                        <button type="submit" class="btn btn-default" ng-hide="savingInProcess">Save meal</button>
+                        <button type="button" class="btn btn-default" ng-click="showAddForm = 0">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="check-element animate-hide" ng-show="showEditForm" style="   position: fixed;top: 30px;width: 1100px;z-index: 999; box-shadow: 0 0 0 5000px rgba(0, 0, 0, 0.65);">
+            <div class="row">
+                <form role="form" name="editMealForm" ng-submit="updateMeal(editedMeal)" novalidate>
+                    <div class="form-error-login-message" ng-show="errorSave">{{errorSave}}</div>
+                    <div class="col-md-4 form-group" ng-class="{'has-error': datepickerForm.date.$invalid}">
+                        Date:<br/>
+                        <div class="form-group">
+                            <div class="form-group pull-left" style="min-width: 150px;">
+                                <input size="10" class="form-control" ng-model="editedMeal.date" data-autoclose="1" required="" bs-datepicker type="text">
+                                <span class="form-error-message" ng-show="createErrors.date">{{createErrors.date}}</span>
+                            </div>
+                            <div class="form-group pull-left" style="padding-left: 5px;">
+                                <input size="8" class="form-control" ng-model="editedMeal.time" data-autoclose="1" required=""  type="text">
+                                <span class="form-error-message" ng-show="createErrors.time">{{createErrors.time}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        Name:<br/>
+                        <input class="form-control" ng-model="editedMeal.name"/>
+                        <span class="form-error-message" ng-show="createErrors.name">{{createErrors.name}}</span>
+                    </div>
+                    <div class="col-md-2">
+                        Calories:<br/>
+                        <input class="form-control inline" ng-model="editedMeal.calories" />
+                        <span class="form-error-message" ng-show="createErrors.calories">{{createErrors.calories}}</span>
+                    </div>
+                    <div class="col-md-3"><br/>
+                        <button type="submit" class="btn btn-default" ng-hide="savingInProcess">Save meal</button>
+                        <button type="button" class="btn btn-default" ng-click="showEditForm = 0">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <br/>
+        <button class="btn btn-default " ng-click="showFilters = 1">Show filters</button><br/><br/>
+        <div ng-show="showFilters" class="">
+            <div class="row">
+                <div class="col-sm-12" style="width: 520px;">
+                    Date filter:
+                    <input ng-model="filter.fromDate" data-max-date="{{filter.untilDate}}" placeholder="From" bs-datepicker type="text" style="width: 100px;">
+                    <input ng-model="filter.untilDate" data-min-date="{{filter.fromDate}}" placeholder="Until" bs-datepicker type="text" style="width: 100px;">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12" style="width: 520px;">
+                    Time filter:
+                    <input ng-model="filter.fromTime" data-max-date="{{filter.untilTime}}" placeholder="From" bs-timepicker type="text" style="width: 100px;">
+                    <input ng-model="filter.untilTime" data-min-date="{{filter.fromTime}}" placeholder="Until" bs-timepicker type="text" style="width: 100px;">
+                </div>
+            </div><br/>
+            <button type="button" class="btn btn-default" ng-click="applyFilter()">Apply</button>
+            <button type="button" class="btn btn-default" ng-click="resetFilter()">Reset</button>
+            <button type="button" class="btn btn-default" ng-click="showFilters = 0">Close</button>
+        </div>
+        <div ng-show="meals.total">
+
+            <h4>Last {{meals.total}} Meals</h4>
+
+
+            <div class="row">
+                <table class="table table-striped" >
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Name</th>
+                        <th>Calories</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in meals.list">
+                        <td>{{$index + 1}}</td>
+                        <td>{{item[0].date | date:'yyyy/MM/dd'}}</td>
+                        <td>{{item[0].time}}</td>
+                        <td>{{item[0].name}}</td>
+                        <td>{{item[0].calories}}</td>
+                        <td>
+                            <a href="" class="btn btn-warning" ng-click="editMeal(item)">Edit</a>
+                            <a href="" class="btn btn-warning" ng-click="removeMeal(item.id)">Remove</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>

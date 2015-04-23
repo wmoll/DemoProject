@@ -1,0 +1,24 @@
+<div class="row account-box">
+    <div class="col-sm-6">
+        <div class="col-sm-8">
+            <h1>Log In</h1>
+            <div class="form-error-login-message" ng-show="errorLogin">{{errorLogin}}</div>
+            <form role="form" name="loginForm" ng-submit="login(user)" novalidate>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="loginEmail" ng-model="user.username" required="required" placeholder="Login">
+                    <span class="form-error-message" ng-show="loginErrors.username">{{loginErrors.username}}</span>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="loginPwd" ng-model="user.password" required="required" placeholder="Password">
+                    <span class="form-error-message" ng-show="loginErrors.password">{{loginErrors.password}}</span>
+                </div>
+                <span><a href="#/reset">Forgot your password?</a></span>
+                <button type="submit" class="btn btn-primary pull-right" ng-hide="inLoginProcess" style="min-width:100px;">Log In <ng-md-icon style="fill:#fff;position: absolute;" icon="chevron_right"></ng-md-icon></button>
+            </form>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <h2>Don't have an account?</h2>
+        <a style="min-width: 280px; font-size:16px;" href="#/signup" class="btn btn-danger">Create Free Account<ng-md-icon style="fill:#fff;position: absolute;" icon="chevron_right"></ng-md-icon></a><br/>
+    </div>
+</div>
